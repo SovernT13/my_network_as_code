@@ -5,6 +5,11 @@ node {
         checkout scm
     }
 
+    stage ('Validate Generate Configurations Playbook') {
+        // Check the playbook before running it
+        sh 'ansible-playbook generate_configurations.yaml -- syntax-check'
+    }
+
     stage ('Render Configurations') {
         // Generate our confis with our sweet Playbooks
         sh 'ansible-playbook generate_configurations.yaml'
@@ -12,6 +17,7 @@ node {
 
     stage ('Unit Testing') {
         // Do some kind of "linting" on our code to make sure we didn't bugger anything up too badly
+        sh 'ansible-playbook deploy_configurations.yaml --syntax-check'
     }
 
     stage ('Deploy Configurations to Dev') {
