@@ -1,6 +1,8 @@
 node {
     stage ('Checkout Repository') {
         // Get our repo cloned and prepped for action
+        deleteDir()
+        checkout scm
     }
 
     stage ('Render Configurations') {
