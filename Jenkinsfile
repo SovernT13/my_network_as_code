@@ -7,7 +7,7 @@ node {
 
     stage ('Validate Generate Configurations Playbook') {
         // Check the playbook before running it
-        sh 'ansible-playbook generate_configurations.yaml -- syntax-check'
+        sh 'ansible-playbook generate_configurations.yaml --syntax-check'
     }
 
     stage ('Render Configurations') {
