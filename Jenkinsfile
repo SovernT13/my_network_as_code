@@ -7,6 +7,7 @@ node {
 
     stage ('Render Configurations') {
         // Generate our confis with our sweet Playbooks
+        sh 'ansible-playbook generate_configurations.yaml'
     }
 
     stage ('Unit Testing') {
